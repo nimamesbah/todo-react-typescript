@@ -8,6 +8,8 @@ export type TODOPROPS = {
   title: string | undefined;
   isDone: boolean | undefined;
   setter: React.Dispatch<React.SetStateAction<TODO[]>>;
+  setEdit: React.Dispatch<React.SetStateAction<number | null>>;
+  edit: null | number;
 };
 export type TODOSTORE = {
   todo: null | TODO;
