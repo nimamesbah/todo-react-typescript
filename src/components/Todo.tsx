@@ -1,10 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import { useForm, type FieldValues } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import type { TODOPROPS } from "../types";
 
 function Todo({ id, title, isDone, setter, setEdit, edit }: TODOPROPS) {
-  const { register, handleSubmit, setFocus } = useForm();
-  const editRef = useRef<null | HTMLInputElement>(null);
+  const { register, handleSubmit } = useForm();
 
   function isDoneHandle() {
     setter((prev) => {
@@ -44,12 +42,7 @@ function Todo({ id, title, isDone, setter, setEdit, edit }: TODOPROPS) {
         </div>
       ) : (
         <form onSubmit={handleSubmit(saveEdit)} className="">
-          <input
-            type="text"
-            {...register("editInput")}
-            defaultValue={title}
-            ref={editRef}
-          />
+          <input type="text" {...register("editInput")} defaultValue={title} />
           <button type="submit">save</button>
         </form>
       )}
